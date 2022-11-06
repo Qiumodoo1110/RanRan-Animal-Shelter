@@ -155,8 +155,29 @@
             <p class="text-sm">Copyright © RanRan Heart Of Animal Shelter All Rights Reserved.</p>
         </div>
     </footer>
+    <!-- Back to Top Button -->
+    <div class="gotoTop" id="gotoTop"><a href=""><i class="fa-solid fa-chevron-up"></i></a></div>
+
     <script>
         AOS.init(); //Initialize AOS
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        var btn = $('.gotoTop');
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 500) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+
+        btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, '300');
+        });
     </script>
 </body>
 
