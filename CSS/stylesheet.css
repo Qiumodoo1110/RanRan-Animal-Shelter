@@ -726,3 +726,35 @@ body.single .header {
     color: #F6BD60;
     border: 2px solid #F6BD60;
 }
+
+/* Back to Top Button */
+.gotoTop {
+    position: fixed;
+    z-index: 555;
+    height: 40px;
+    width: 40px;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 6px;
+    background-color: #A9A9A9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.gotoTop > a {
+    display: block;
+    color: #FCFCFC;
+}
+
+.gotoTop:hover {
+    background-color: #F6BD60;
+}
+
+.gotoTop.show {
+    opacity: 1;
+    visibility: visible;
+}
