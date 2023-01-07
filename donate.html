@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/stylesheet.css">
     <script src="https://kit.fontawesome.com/c810c1cc2c.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.3.min.js"></script>
 </head>
 
 <body class="single">
@@ -22,10 +23,22 @@
                 <li class="nav-item"><a href="" class="nav-item-link">我要認養</a></li>
                 <li class="nav-item"><a href="" class="nav-item-link">志工園地</a></li>
                 <li class="nav-item"><a href="" class="nav-item-link">活動消息</a></li>
-                <li class="nav-item nav-donation"><a href="donate.html" class="nav-item-link nav-donation-item">愛心捐款</a></li>
+                <li class="nav-item nav-donation"><button class="btn-primary-md"
+                        onclick="location.href='donate.html'">愛心捐款</button></li>
+                <li><a href="" class="toggle" id="toggle">Menu　<i class="fa-solid fa-bars"></i></a>
+                </li>
             </ul>
         </nav>
     </header>
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item"><a href="about.html" class="sidebar-item-link text-lg">關於我們</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">我要認養</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">志工園地</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">活動消息</a></li>
+            <li class="sidebar-item"><a href="donate.html" class="sidebar-item-link text-lg">愛心捐款</a></li>
+        </ul>
+    </nav>
     <!-- main -->
     <div class="wrapper">
         <div class="container">
@@ -42,7 +55,8 @@
             <section class="page-row">
                 <div class="page-row-title">
                     <h4 class="text-h3">牠們將會得到...</h4>
-                    <p class="text-md-1">我們收到的捐款和救濟物資將用於手術費、疫苗接種費、各種檢查費、沐浴及飼料雜費等。<br>我們真誠地期待您的捐贈和支持，讓盡可能多的獲救貓能夠見到他們的養父母，過上幸福的生活。</p>
+                    <p class="text-md-1">
+                        我們收到的捐款和救濟物資將用於手術費、疫苗接種費、各種檢查費、沐浴及飼料雜費等。<br>我們真誠地期待您的捐贈和支持，讓盡可能多的獲救貓能夠見到他們的養父母，過上幸福的生活。</p>
                 </div>
                 <div class="donation-pic-area">
                     <img class="donation-pic" src="images/pic-pill.png" alt="">
@@ -57,7 +71,8 @@
             <section class="page-row">
                 <div class="page-row-title">
                     <h4 class="text-h3">捐款方式</h4>
-                    <p class="text-lg"><img class="paw-left" src="images/paw.png" alt="">銀行帳號<img class="paw-right" src="images/paw.png" alt=""></p>
+                    <p class="text-lg"><img class="paw-left" src="images/paw.png" alt="">銀行帳號<img class="paw-right"
+                            src="images/paw.png" alt=""></p>
                 </div>
                 <div class="account-table">
                     <div class="account-table-row">
@@ -82,7 +97,8 @@
                     </div>
                 </div>
                 <div class="page-row-title">
-                    <p class="text-lg"><img class="paw-left" src="images/paw.png" alt="">線上捐款<img class="paw-right" src="images/paw.png" alt=""></p>
+                    <p class="text-lg"><img class="paw-left" src="images/paw.png" alt="">線上捐款<img class="paw-right"
+                            src="images/paw.png" alt=""></p>
                 </div>
                 <div class="donation-online">
                     <img src="images/page2_org.jpg" alt="" class="donation-online-pic">
@@ -124,6 +140,18 @@
             <p class="text-sm">Copyright © RanRan Heart Of Animal Shelter All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        $(document).ready(() => {
+            $('.toggle').click(function () {
+                //避免 a 標籤會觸發
+                event.preventDefault();
+                //展開或收起來
+                $('.sidebar').slideToggle(600);
+                $("i", this).toggleClass("fa-caret-up fa-xmark");
+            })
+        })
+    </script>
 </body>
 
 </html>

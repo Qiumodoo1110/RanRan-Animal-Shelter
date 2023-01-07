@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="CSS/normalize.css">
     <link rel="stylesheet" href="CSS/stylesheet.css">
     <script src="https://kit.fontawesome.com/c810c1cc2c.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.3.min.js"></script>
 </head>
 
 <body class="single">
@@ -22,10 +23,22 @@
                 <li class="nav-item"><a href="" class="nav-item-link">我要認養</a></li>
                 <li class="nav-item"><a href="" class="nav-item-link">志工園地</a></li>
                 <li class="nav-item"><a href="" class="nav-item-link">活動消息</a></li>
-                <li class="nav-item nav-donation"><a href="donate.html" class="nav-item-link nav-donation-item">愛心捐款</a></li>
+                <li class="nav-item nav-donation"><button class="btn-primary-md"
+                        onclick="location.href='donate.html'">愛心捐款</button></li>
+                <li><a href="" class="toggle" id="toggle">Menu　<i class="fa-solid fa-bars"></i></a>
+                </li>
             </ul>
         </nav>
     </header>
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item"><a href="about.html" class="sidebar-item-link text-lg">關於我們</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">我要認養</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">志工園地</a></li>
+            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">活動消息</a></li>
+            <li class="sidebar-item"><a href="donate.html" class="sidebar-item-link text-lg">愛心捐款</a></li>
+        </ul>
+    </nav>
     <!-- main -->
     <div class="wrapper">
         <div class="container">
@@ -44,7 +57,8 @@
                 </div>
                 <div class="page-propose">
                     <div class="page-propose-content">
-                        <p class="text-md-1">浪浪之心臺灣動物協會（RanRan Heart of Animal Shelter）成立於2020年，是一非營利、非政府的民間組織。我們每年訂定明確、務實的階段任務，堅定原則，朝著最終目標前進。</p>
+                        <p class="text-md-1">浪浪之心臺灣動物協會（RanRan Heart of Animal
+                            Shelter）成立於2020年，是一非營利、非政府的民間組織。我們每年訂定明確、務實的階段任務，堅定原則，朝著最終目標前進。</p>
                         <p class="text-md-1">
                             本會成員涵蓋各領域的專家，包括地方縣市政府動物保護諮議委員、動物保護生命教育講師、獸醫師......等，我們​期望能夠整合民間不同專業領域的資源以及政府單位的力量，盡最大的努力「為牠們發聲」。
                         </p>
@@ -127,6 +141,18 @@
             <p class="text-sm">Copyright © RanRan Heart Of Animal Shelter All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        $(document).ready(() => {
+            $('.toggle').click(function () {
+                //避免 a 標籤會觸發
+                event.preventDefault();
+                //展開或收起來
+                $('.sidebar').slideToggle(600);
+                $("i", this).toggleClass("fa-caret-up fa-xmark");
+            })
+        })
+    </script>
 </body>
 
 </html>
