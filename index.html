@@ -39,17 +39,22 @@
                 </li>
             </ul>
         </nav>
-
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item"><a class="sidebar-item-link" href="about.html"
+                        class="sidebar-item-link text-md-3">關於我們</a></li>
+                <li class="sidebar-item"><a class="sidebar-item-link" href="adopt.html"
+                        class="sidebar-item-link text-md-3">我要認養</a></li>
+                <li class="sidebar-item"><a class="sidebar-item-link" href="volunteer.html"
+                        class="sidebar-item-link text-md-3">志工園地</a></li>
+                <li class="sidebar-item"><a class="sidebar-item-link" href=""
+                        class="sidebar-item-link text-md-3">活動消息</a>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-item-link" href="donate.html"
+                        class="sidebar-item-link text-md-3">愛心捐款</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav class="sidebar">
-        <ul class="sidebar-menu">
-            <li class="sidebar-item"><a href="about.html" class="sidebar-item-link text-lg">關於我們</a></li>
-            <li class="sidebar-item"><a href="adopt.html" class="sidebar-item-link text-lg">我要認養</a></li>
-            <li class="sidebar-item"><a href="volunteer.html" class="sidebar-item-link text-lg">志工園地</a></li>
-            <li class="sidebar-item"><a href="" class="sidebar-item-link text-lg">活動消息</a></li>
-            <li class="sidebar-item"><a href="donate.html" class="sidebar-item-link text-lg">愛心捐款</a></li>
-        </ul>
-    </nav>
     <!-- main -->
     <div class="wrapper">
         <div class="banner">
@@ -245,15 +250,34 @@
         });
     </script>
     <script>
+        $(window).scroll(function () {
+
+            if ($(window).scrollTop() > 300) {
+                $('.header').addClass('header-active');
+            } else {
+                $('.header').removeClass('header-active');
+            }
+        });
+
         $(document).ready(() => {
-            $('.toggle').click(function () {
+            $('#toggle').click(function () {
                 //避免 a 標籤會觸發
                 event.preventDefault();
                 //展開或收起來
-                $('.sidebar').slideToggle(600);
-                $("i", this).toggleClass("fa-caret-up fa-xmark");
+                if ($('header').hasClass('header')) {
+                    $('.sidebar').slideToggle(600);
+                    $('header').removeClass('header');
+                    $('header').addClass('header-active');
+                    $("i", this).toggleClass("fa-caret-up fa-xmark");
+                } else {
+                    $('.sidebar').slideToggle(600);
+                    $('header').removeClass('header-active');
+                    $('header').addClass('header');
+                    $("i", this).toggleClass("fa-xmark fa-caret-up");
+                }
             })
         })
+
     </script>
 </body>
 
