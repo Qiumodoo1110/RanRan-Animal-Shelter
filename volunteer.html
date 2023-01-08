@@ -12,11 +12,15 @@
     <script src="https://kit.fontawesome.com/c810c1cc2c.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="js/jquery-3.6.3.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
 </head>
 
 <body class="single">
     <!-- header -->
-    <header class="header">
+    <header class="header-active">
         <h1 class="logo"><a href="index.html"><img src="images/logo_scroll.png" alt=""></a></h1>
         <nav class="nav nav-active">
             <ul class="nav-menu">
@@ -76,25 +80,26 @@
                     </div>
                 </div>
                 <div class="form-area">
-                    <form action="">
+                    <form action="" id="volunteerForm">
                         <div class="form-input">
-                            <label class="text-md-1" for=""><span>＊</span> 姓名</label>
-                            <input type="text" placeholder="Ex: 王小華">
+                            <label class="text-md-1" for="name"><span>＊</span> 姓名</label>
+                            <input type="text" name="name" id="name" placeholder="Ex: 王小華" required>
                         </div>
                         <div class="form-input">
-                            <label class="text-md-1" for=""><span>＊</span> 聯絡電話</label>
-                            <input type="text" placeholder="Ex: 0912345567">
+                            <label class="text-md-1" for="phone"><span>＊</span> 聯絡電話</label>
+                            <input type="text" name="phone" id="phone" placeholder="Ex: 0912345567" required>
                         </div>
                         <div class="form-input">
-                            <label class="text-md-1" for=""><span>＊</span> 電子信箱</label>
-                            <input type="text" placeholder="Ex: aaa@hotmail.com">
+                            <label class="text-md-1" for="email"><span>＊</span> 電子信箱</label>
+                            <input type="email" name="email" id="email" placeholder="Ex: aaa@hotmail.com" required>
                         </div>
                         <div class="form-input">
-                            <label class="text-md-1" for="">提問箱</label>
-                            <textarea name="" id="" cols="20" rows="8" placeholder="歡迎提問（可於此處填寫您方便支援的時段）"></textarea>
+                            <label class="text-md-1" for="message">提問箱</label>
+                            <textarea name="message" id="message" cols="20" rows="8"
+                                placeholder="歡迎提問（可於此處填寫您方便支援的時段）"></textarea>
                         </div>
                         <div class="btn-middle">
-                            <button class="btn-primary-lg">立刻報名</button>
+                            <button class="btn-primary-lg" type="submit" id="submit">立刻報名</button>
                         </div>
                     </form>
                     <div class="letter">
@@ -257,6 +262,62 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function () {
+            firebase.initializeApp({
+                apiKey: "AIzaSyCvtwfXVb6lkWrWoijRqzKynT0wW8ZFuGE",
+                authDomain: "ranran-stray-animal-shelter.firebaseapp.com",
+                databaseURL: "https://ranran-stray-animal-shelter-default-rtdb.firebaseio.com",
+                projectId: "ranran-stray-animal-shelter",
+                storageBucket: "ranran-stray-animal-shelter.appspot.com",
+                messagingSenderId: "27489907527",
+                appId: "1:27489907527:web:1899b873f04a15d2cf9262"
+            });
+
+            let db = firebase.firestore();
+
+            let volunteerRef = db.collection("volunteers");
+
+            // Listen for form submit
+            document.getElementById('volunteerForm').addEventListener('submit', submitForm);
+
+            // Submit form
+            function submitForm(e) {
+                e.preventDefault();
+
+                // Get values
+                var name = getInputVal('name');
+                var email = getInputVal('email');
+                var phone = getInputVal('phone');
+                var message = getInputVal('message');
+
+                // Save message
+                saveMessage(name, email, phone, message);
+
+                // Clear form
+                document.getElementById('volunteerForm').reset();
+            };
+
+            // Function to get get form values
+            function getInputVal(id) {
+                return document.getElementById(id).value;
+            };
+
+            // Save message to firebase
+            function saveMessage(name, company, email, phone, message) {
+                volunteerRef.add({
+                    "name": document.getElementById("name").value,
+                    "phone": document.getElementById("phone").value,
+                    "email": document.getElementById("email").value,
+                    "message": document.getElementById("message").value
+                }).then(() => {
+                    window.alert('報名成功！');
+                });
+            };
+        })
+    </script>
+
 </body>
 
 </html>
