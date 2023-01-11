@@ -169,9 +169,9 @@
             <div class="footer-info">
                 <h6 class="text-h5">Quick Links</h6>
                 <div class="footer-link">
-                    <a href="" class="text-md-3">愛心捐款</a>
-                    <a href="" class="text-md-3">待領養動物</a>
-                    <a href="" class="text-md-3">加入志工行列</a>
+                    <a href="donate.html" class="text-md-3">愛心捐款</a>
+                    <a href="adopt.html" class="text-md-3">待領養動物</a>
+                    <a href="volunteer.html" class="text-md-3">加入志工行列</a>
                 </div>
             </div>
             <div class="footer-icon">
@@ -279,23 +279,23 @@
 
             let volunteerRef = db.collection("volunteers");
 
-            // Listen for form submit
+            // 監聽表單 Submit 的事件
             document.getElementById('volunteerForm').addEventListener('submit', submitForm);
 
-            // Submit form
+            // 送出表單
             function submitForm(e) {
                 e.preventDefault();
 
-                // Get values
+                // 取得 input 欄位中的值
                 var name = getInputVal('name');
                 var email = getInputVal('email');
                 var phone = getInputVal('phone');
                 var message = getInputVal('message');
 
-                // Save message
+                // 儲存資料
                 saveMessage(name, email, phone, message);
 
-                // Clear form
+                // 清除表單
                 document.getElementById('volunteerForm').reset();
             };
 
@@ -304,7 +304,7 @@
                 return document.getElementById(id).value;
             };
 
-            // Save message to firebase
+            // 將資料送進 Firebase 資料庫中
             function saveMessage(name, company, email, phone, message) {
                 volunteerRef.add({
                     "name": document.getElementById("name").value,
