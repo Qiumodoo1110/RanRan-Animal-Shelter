@@ -1310,6 +1310,10 @@ body {
         padding: 8px 12px;
     }
 
+    .header-active {
+        padding: 8px 12px;
+    }
+
     .nav-item-link {
         padding: 8px 12px;
     }
@@ -1377,5 +1381,11 @@ body {
 
     .form-input textarea {
         width: 270px;
+    }
+}
+
+@media (max-width: 410px) {
+    .toggle {
+        padding: 4px 8px;
     }
 }
